@@ -3,7 +3,9 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package pasien;
+package model;
+
+import com.sun.istack.internal.logging.Logger;
 
 /**
  *
@@ -48,6 +50,7 @@ public class test1 {
             System.out.println(psn.getTahunLahir());
         } catch (Exception ex) {
             System.out.println(ex);
+
         }
         System.out.print("No rekam Medis    : ");
         try {
