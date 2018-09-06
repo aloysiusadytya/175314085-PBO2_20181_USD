@@ -13,6 +13,7 @@ import java.util.Date;
  * @author Hewlett-Packard
  */
 public class dokter {
+
     private String noPegawai;
     private String nama;
     private String alamat;
@@ -20,33 +21,47 @@ public class dokter {
     private int tanggalLahir;
     private int bulanLahir;
     private int tahunLahir;
-    
-    public dokter(){
-        
+
+    public dokter() {
+
     }
 
     public int getBulanLahir() {
         return bulanLahir;
     }
 
-    public void setBulanLahir(int bulanLahir) {
-        this.bulanLahir = bulanLahir;
+    public void setBulanLahir(int bulanLahir) throws Exception {
+        if (bulanLahir > 0 && bulanLahir < 13) {
+            this.bulanLahir = bulanLahir;
+        } else {
+            throw new Exception("salah tanggal/bulan/tahun");
+        }
+
     }
 
     public int getTahunLahir() {
         return tahunLahir;
     }
 
-    public void setTahunLahir(int tahunLahir) {
-        this.tahunLahir = tahunLahir;
+    public void setTahunLahir(int tahunLahir) throws Exception {
+        if (tahunLahir > 0) {
+            this.tahunLahir = tahunLahir;
+        } else {
+            throw new Exception("salah tanggal/bulan/tahun");
+        }
+
     }
 
     public String getNoPegawai() {
         return noPegawai;
     }
 
-    public void setNoPegawai(String noPegawai) {
-        this.noPegawai = noPegawai;
+    public void setNoPegawai(String noPegawai) throws Exception {
+        if (noPegawai.length() >= 6 && noPegawai.length() <= 20) {
+            this.noPegawai = noPegawai;
+        } else {
+            throw new Exception("No pegawai salah");
+        }
     }
 
     public String getNama() {
@@ -77,10 +92,15 @@ public class dokter {
         return tanggalLahir;
     }
 
-    public void setTanggalLahir(int tanggalLahir) {
-        this.tanggalLahir = tanggalLahir;
+    public void setTanggalLahir(int tanggalLahir) throws Exception {
+        if (tanggalLahir > 0 && tanggalLahir < 32) {
+            this.tanggalLahir = tanggalLahir;
+        } else {
+            throw new Exception("salah tanggal/bulan/tahun");
+        }
     }
-    public void getKelahiran() {
+
+    public void getKelahiranDokter() {
         Date date = new Date(getTahunLahir() - 1900, getBulanLahir() - 1, getTanggalLahir());
         SimpleDateFormat ft = new SimpleDateFormat("dd-MM-yyyy");
         System.out.print(ft.format(date));
