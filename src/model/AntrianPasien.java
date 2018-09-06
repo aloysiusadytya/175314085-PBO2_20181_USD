@@ -12,28 +12,28 @@ import java.util.ArrayList;
  *
  * @author Hewlett-Packard
  */
-public class AntrianPasien2 {
+public class AntrianPasien {
 
     /**
      * mendeklarasikan variabel klinik yang bertipe Klinik
      * membuat objek urutanPasien dengan ArrayList 
      */
     private Klinik klinik;
-    private ArrayList<pasien2> urutanPasien = new ArrayList<pasien2>();
+    private ArrayList<Pasien> urutanPasien = new ArrayList<Pasien>();
 
     /**
      * 
      */
-    public AntrianPasien2() {
+    public AntrianPasien() {
 
     }
 
-    public ArrayList<pasien2> getUrutanPasien() {
+    public ArrayList<Pasien> getUrutanPasien() {
         //pengambalian nilai dari variabel urutanPasien
         return urutanPasien;
     }
 
-    public void setDaftarPasien(ArrayList<pasien2> urutanPasien) {
+    public void setDaftarPasien(ArrayList<Pasien> urutanPasien) {
         // pernyataan bahwa nilai dari variabel daftarPasien sama dengan nilai dari variabel lokal daftarPasien
         this.urutanPasien = urutanPasien;
     }
@@ -51,7 +51,7 @@ public class AntrianPasien2 {
         return klinik;
     }
 
-    public void Pendaftar(pasien2 pasien) {
+    public void Pendaftar(Pasien pasien) {
         // mengisi data pada variabel daftarPasien dengan variabel lokal daftarPasien 
         urutanPasien.add(pasien);
     }

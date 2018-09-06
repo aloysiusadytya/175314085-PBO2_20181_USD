@@ -12,7 +12,7 @@ import java.util.Date;
  *
  * @author Hewlett-Packard
  */
-public class pasien2 {
+public class Pasien {
 
     /**
      * mendeklarasikan variabel yang diperlukan untuk mengisi data dari pasien
@@ -28,7 +28,7 @@ public class pasien2 {
     /**
      * object pasien2 dideklarasikan lewat konstruktor
      */
-    public pasien2() {
+    public Pasien() {
 
     }
 

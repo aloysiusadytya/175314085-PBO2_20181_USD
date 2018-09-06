@@ -13,10 +13,10 @@ public class TestFinal {
 
     public static void main(String[] args) {
 
-        pasien2 psn1 = new pasien2();
-        pasien2 psn2 = new pasien2();
+        Pasien psn1 = new Pasien();
+        Pasien psn2 = new Pasien();
         dokter dok = new dokter();
-        AntrianPasien2 urutan = new AntrianPasien2();
+        AntrianPasien urutan = new AntrianPasien();
         Klinik klinik = new Klinik();
 
         try {
