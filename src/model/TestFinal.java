@@ -54,16 +54,17 @@ public class TestFinal {
             ex.printStackTrace();
         }
         System.out.println(urutan.getKlinik().getNama());
-        System.out.println("ID Klinik : " + urutan.getKlinik().getIdKlinik());
+        System.out.println("Id Klinik : " + urutan.getKlinik().getIdKlinik());
         System.out.println("");
 
         for (int i = 0; i < urutan.getUrutanPasien().size(); i++) {
             System.out.println("");
 
-            System.out.println("--- DATA PASIEN ---");
+            System.out.println("Pasien");
+            System.out.println("===================================");
             System.out.println("Nama Pasien     : " + urutan.getUrutanPasien().get(i).getNama());
             System.out.println("Alamat          : " + urutan.getUrutanPasien().get(i).getAlamat());
-            System.out.print("TTL             : " + urutan.getUrutanPasien().get(i).getTempatLahir());
+            System.out.print("Tempat Tanggal Lahir : " + urutan.getUrutanPasien().get(i).getTempatLahir());
             System.out.print(" , ");
             urutan.getUrutanPasien().get(i).getKelahiran();
             System.out.println("");
@@ -72,14 +73,16 @@ public class TestFinal {
             System.out.println("");
             System.out.println("");
 
-            System.out.println("--- DATA DOKTER ---");
+            System.out.println("dokter");
+            System.out.println("===================================");
             System.out.println("Nama            : " + dok.getNama());
             System.out.println("No Pegawai      : " + dok.getNoPegawai());
             System.out.println("Alamat          : " + dok.getAlamat());
-            System.out.print("TTL             : " + dok.getTempatLahir());
+            System.out.print("Tempat Tanggal Lahir : " + dok.getTempatLahir());
             System.out.print(" , ");
             dok.getKelahiranDokter();
 
+            System.out.println("");
             System.out.println("");
         }
 

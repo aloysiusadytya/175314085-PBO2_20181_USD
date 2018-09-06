@@ -10,29 +10,53 @@ package model;
  * @author jarkom
  */
 public class Klinik {
+
     private String idKlinik;
     private String nama;
 
-    
-    public Klinik(){
-        
+    /**
+     * object Klinik dideklarasikan lewat konstruktor
+     */
+    public Klinik() {
+
     }
-    
+
+    /**
+     * method ini digunakan untuk mengambil nilai idKlinik
+     *
+     * @return
+     */
     public String getIdKlinik() {
         return idKlinik;
     }
 
+    /**
+     * method ini digunakan untuk memasukkan nilai dari variabel idKlinik dengan
+     * parameter lokal dengan tipe String
+     *
+     * @param idKlinik
+     */
     public void setIdKlinik(String idKlinik) {
         this.idKlinik = idKlinik;
     }
 
+    /**
+     * method ini digunakan untuk mengambil nilai nama
+     *
+     * @return
+     */
     public String getNama() {
         return nama;
     }
 
+    /**
+     * method ini digunakan untuk memasukkan nilai dari variabel nama dengan
+     * parameter lokal dengan tipe String
+     *
+     * @param nama
+     */
     public void setNama(String nama) {
         this.nama = nama;
     }
-    
-    
+
 }
