@@ -25,9 +25,13 @@ public class MainFrame extends JFrame {
     }
 
     private void init() {
+        //membuat menu bar
         menuBar=new JMenuBar();
+        //setset tittle
         this.setTitle("Main Frame");
+        //membuat menu File
         fileMenu=new JMenu("File");
+        //membuat menu file exit
         exitMenuItem=new JMenuItem("exit");
         fileMenu.add(exitMenuItem);
         menuBar.add(fileMenu);
