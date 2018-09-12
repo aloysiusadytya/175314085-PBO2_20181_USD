@@ -4,7 +4,7 @@
  * and open the template in the editor.
  */
 package test;
-import view.daftarPasienBAruDialog;
+import view.DaftarPasienBaruDialog;
 
 
 /**
@@ -13,7 +13,7 @@ import view.daftarPasienBAruDialog;
  */
 public class testDaftarPasienBaruDialog {
     public static void main(String[] args) {
-        daftarPasienBAruDialog testNama= new daftarPasienBAruDialog();
+        DaftarPasienBaruDialog testNama= new DaftarPasienBaruDialog();
         testNama.setSize(400, 500);
         testNama.setVisible(true);
 }

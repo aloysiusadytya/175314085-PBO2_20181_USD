@@ -5,15 +5,15 @@
  */
 package test;
 
-import view.daftarAntrianDialog;
+import view.DaftarAntrianDialog;
 
 /**
  *
  * @author jarkom
  */
-public class testDialog {
+public class testAntrianDialog {
     public static void main(String[] args) {
-        daftarAntrianDialog testNama= new daftarAntrianDialog();
+        DaftarAntrianDialog testNama= new DaftarAntrianDialog();
         testNama.setSize(400, 500);
         testNama.setVisible(true);
 

@@ -6,7 +6,7 @@
 package test;
 
 import view.MainFrame;
-import view.daftarAntrianDialog;
+import view.DaftarAntrianDialog;
 
 /**
  *
