@@ -6,53 +6,65 @@
 package view;
 
 import java.awt.HeadlessException;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import javax.swing.JFrame;
 import javax.swing.JMenu;
 import javax.swing.JMenuBar;
 import javax.swing.JMenuItem;
 
+public class MainFrame extends JFrame implements ActionListener {
 
-/**
- * membuat method kelas MainFrame dengan dengan turunan dari JFrame
- *
- * @author Hewlett-Packard
- */
-public class MainFrame extends JFrame {
-
-    // mendeklarasikan variabel menuBar bertipe data JMenuBar dan bersifat private
+    
+        
+    
     private JMenuBar menuBar;
-    // private mendeklarasikan variabel fileMenu bertipe data JMenu dan bersifat private
     private JMenu fileMenu;
-    // private mendeklarasikan variabel exitMenuItem bertipe data JMenuItem dan bersifat private
     private JMenuItem exitMenuItem;
-
-    /**
-     * membuat constructor MainFrame dengan handleException
-     *
-     * @throws HeadlessException
-     */
+    private JMenuItem tambahPasienMenuItem;
+    private JMenuItem tambahAntrianPasienMenuItem;
     public MainFrame() throws HeadlessException {
-        // memanggil method init
         init();
     }
 
-    /**
-     * membuat method init bertipe data void
-     */
-    private void init() {
-        //membuat menu bar
+    public void init() {
+        // buat menu bar
         menuBar = new JMenuBar();
-        //set tittle
+        // set Titile
         this.setTitle("Main Frame");
-        //membuat menu File
+        // buat menu
         fileMenu = new JMenu("File");
-        //membuat menu file exit
         exitMenuItem = new JMenuItem("exit");
-        // menambahkan menu item exit
+        tambahPasienMenuItem = new JMenuItem("TambahPasien");
+        fileMenu.add(tambahPasienMenuItem);
+        tambahAntrianPasienMenuItem = new JMenuItem("TambahAntrian");
+        fileMenu.add(tambahAntrianPasienMenuItem);
         fileMenu.add(exitMenuItem);
-        // menambahkan menu bar fileMenu
         menuBar.add(fileMenu);
-        // set MenuBar
+
+        exitMenuItem.addActionListener(this);
+        tambahPasienMenuItem.addActionListener(this);
+        tambahAntrianPasienMenuItem.addActionListener(this);
+
         this.setJMenuBar(menuBar);
     }
+
+    @Override
+    public void actionPerformed(ActionEvent e) {
+        if (e.getSource() == exitMenuItem) {
+            System.exit(0);
+        }
+        if (e.getSource() == tambahPasienMenuItem) {
+            DaftarPasienBaruDialog test = new DaftarPasienBaruDialog();
+            test.setSize(300, 400);
+            test.setVisible(true);
+        }
+        if (e.getSource() == tambahAntrianPasienMenuItem) {
+            DaftarAntrianDialog test = new DaftarAntrianDialog();
+            test.setSize(300, 400);
+            test.setVisible(true);
+        
+    }
+    }
 }
+

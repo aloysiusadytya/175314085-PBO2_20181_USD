@@ -6,6 +6,7 @@
 package testPraktikum12September2018;
 
 import view.DaftarAntrianDialog;
+import view.LatihanDialog;
 
 /**
  *
@@ -13,7 +14,7 @@ import view.DaftarAntrianDialog;
  */
 public class TestTambahAntrianDialog {
     public static void main(String[] args) {
-        DaftarAntrianDialog test = new DaftarAntrianDialog();
+        LatihanDialog test = new LatihanDialog();
         test.setSize(500, 400);
         test.setVisible(true);
     }

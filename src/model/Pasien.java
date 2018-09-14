@@ -14,13 +14,6 @@ import java.util.Date;
  * @author Hewlett-Packard
  */
 public class Pasien {
-
-    public static Pasien cariPasien(String string) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
-
-    
-
     /**
      * mendeklarasikan variabel yang diperlukan untuk mengisi data dari pasien
      */
@@ -216,7 +209,9 @@ public class Pasien {
         System.out.print(ft.format(date));
     }
     
-    
+    public static Pasien cariPasien(String string) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
 
     public static class daftarPasienKlinik {
 

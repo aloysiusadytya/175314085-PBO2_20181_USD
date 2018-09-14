@@ -5,16 +5,18 @@
  */
 package view;
 
+import java.awt.event.ActionEvent;
 import javax.swing.JButton;
 import javax.swing.JDialog;
 import javax.swing.JLabel;
 import javax.swing.JTextField;
+import model.Pasien;
 
 /**
  * membuat method kelas DaftarPasienBaru dengan dengan turunan dari JDialog
  * @author jarkom
  */
-public class DaftarPasienBaruDialog extends JDialog{
+public class DaftarPasienBaruDialog extends JDialog {
 
     // mendeklarasikan variabel judulLabel bertipe data JLabel dan bersifat private
     private JLabel judulLabel;
@@ -96,5 +98,13 @@ public class DaftarPasienBaruDialog extends JDialog{
         saveButton.setBounds(150, 160, 90, 20);
         // meanambahkan saveButton
         this.add(saveButton);
+    }
+    public void actionPerformed(ActionEvent e){
+        Object tambahButton = null;
+        if(e.getSource()==tambahButton){
+            Pasien baru = new Pasien();
+            baru.setNama(namaText.getText());
+
+        }
     }
 }
