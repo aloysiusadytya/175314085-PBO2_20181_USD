@@ -25,6 +25,14 @@ public class Pasien {
     private int tahunLahir;
     private String noRekamMedis;
     private String nik;
+
+    public void setNik(String nik) {
+        this.nik = nik;
+    }
+
+    public String getNik() {
+        return nik;
+    }
     public static ArrayList<Pasien> daftarPasienKlinik = 
             new ArrayList<Pasien>();
     

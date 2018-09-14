@@ -15,14 +15,12 @@ import javax.swing.JMenuItem;
 
 public class MainFrame extends JFrame implements ActionListener {
 
-    
-        
-    
     private JMenuBar menuBar;
     private JMenu fileMenu;
     private JMenuItem exitMenuItem;
     private JMenuItem tambahPasienMenuItem;
     private JMenuItem tambahAntrianPasienMenuItem;
+
     public MainFrame() throws HeadlessException {
         init();
     }
@@ -63,8 +61,10 @@ public class MainFrame extends JFrame implements ActionListener {
             DaftarAntrianDialog test = new DaftarAntrianDialog();
             test.setSize(300, 400);
             test.setVisible(true);
-        
-    }
+
+        }
+        if (e.getSource() == exitMenuItem) {
+            System.exit(0);
+        }
     }
 }
-

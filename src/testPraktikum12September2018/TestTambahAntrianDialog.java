@@ -14,7 +14,7 @@ import view.LatihanDialog;
  */
 public class TestTambahAntrianDialog {
     public static void main(String[] args) {
-        LatihanDialog test = new LatihanDialog();
+        DaftarAntrianDialog test = new DaftarAntrianDialog();
         test.setSize(500, 400);
         test.setVisible(true);
     }

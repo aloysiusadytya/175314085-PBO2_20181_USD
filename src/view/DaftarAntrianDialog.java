@@ -5,16 +5,21 @@
  */
 package view;
 
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import javax.swing.JDialog;
 import javax.swing.JButton;
+import javax.swing.JComboBox;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JTextField;
+import model.Pasien;
 
 /**
  * membuat method kelas daftarAntrianDialog dengan dengan turunan dari JDialog
  * @author jarkom
  */
-public class DaftarAntrianDialog extends JDialog {
+public class DaftarAntrianDialog extends JDialog implements ActionListener{
 
     // mendeklarasikan variabel judulLabel bertipe data JLabel dan bersifat private
     private JLabel judulLabel;
@@ -80,6 +85,8 @@ public class DaftarAntrianDialog extends JDialog {
         // menambahkan namaText
         this.add(namaText);
         
+        namaText.addActionListener(this);
+        
         // mengisi objek noRMLabel dengan NO RM
         noRMLabel=new JLabel("No RM");
         // mengeset ukuran label yang ingin digunakan
@@ -93,6 +100,25 @@ public class DaftarAntrianDialog extends JDialog {
         noRMText.setBounds(100, 100, 100, 20);
         // menambahkan noRMText
         this.add(noRMText);
+        
+        noRMText.addActionListener(this);
+        
+        JLabel tanggaLahirLabel = new JLabel("Tanggal Lahir");
+        tanggaLahirLabel.setBounds(20, 160, 100, 20);
+        this.add(tanggaLahirLabel);
+
+        JComboBox tanggalCombo = new JComboBox();
+        tanggalCombo.setBounds(150, 160, 100, 20);
+        this.add(tanggalCombo);
+
+        JComboBox bulanCombo = new JComboBox();
+        bulanCombo.setBounds(250, 160, 80, 20);
+ 
+        this.add(bulanCombo);
+
+        JComboBox tahunCombo = new JComboBox();
+        tahunCombo.setBounds(350, 160, 80, 20);
+        this.add(tahunCombo);
         
         // mengisi objek alamatLabel dengan alamat
         alamatLabel=new JLabel("alamat");
@@ -108,12 +134,41 @@ public class DaftarAntrianDialog extends JDialog {
         // meanmbahkan alamatText
         this.add(alamatText);
         
+        alamatText.addActionListener(this);
+        
+        
         // mengisi objek saveButton dengan Simpan
         saveButton=new JButton("Simpan");
         // mengeset ukuran tombol yang ingin digunakan
-        saveButton.setBounds(150, 160, 90, 20);
+        saveButton.setBounds(150, 200, 90, 20);
         // meanambahkan saveButton
         this.add(saveButton);
+        saveButton.addActionListener(this);
         
+    }
+   
+    public void actionPerformed(ActionEvent e) {
+        if (e.getSource() == noRMText) {
+            Pasien cari = Pasien.cariPasien(noRMText.getText());
+            if (cari == null){
+                JOptionPane.showConfirmDialog(null, "Orang Tidak Ada");
+            }else{
+                namaText.setText(cari.getNama());
+            }
+        }
+        if (e.getSource() == namaText) {
+            JOptionPane.showMessageDialog(null, namaText.getText());
+        }
+        if (e.getSource() == alamatText) {
+            JOptionPane.showMessageDialog(null, alamatText.getText());
+        }if (e.getSource() == saveButton) {
+            Pasien baru = new Pasien();
+            baru.setNama(namaText.getText());
+            baru.setAlamat(alamatText.getText());
+            
+            Pasien.tambahPasienBaru(baru);
+            
+            JOptionPane.showMessageDialog(null, "Data Disimpan");
+        }
     }
 }
