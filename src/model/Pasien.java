@@ -6,6 +6,7 @@
 package model;
 
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Date;
 
 /**
@@ -13,6 +14,12 @@ import java.util.Date;
  * @author Hewlett-Packard
  */
 public class Pasien {
+
+    public static Pasien cariPasien(String string) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    
 
     /**
      * mendeklarasikan variabel yang diperlukan untuk mengisi data dari pasien
@@ -24,12 +31,25 @@ public class Pasien {
     private int bulanLahir;
     private int tahunLahir;
     private String noRekamMedis;
-
+    private String nik;
+    public static ArrayList<Pasien> daftarPasienKlinik = 
+            new ArrayList<Pasien>();
+    
     /**
      * object pasien2 dideklarasikan lewat konstruktor
      */
     public Pasien() {
 
+    }
+    
+    public Pasien(String nama,String alamat,String tempatLahir,int tanggalLahir,int bulanLahir,int tahunLahir,String nik){
+        this.nama=nama;
+        this.alamat=alamat;
+        this.tempatLahir=tempatLahir;
+        this.tanggalLahir=tanggalLahir;
+        this.bulanLahir=bulanLahir;
+        this.tahunLahir=tahunLahir;
+        this.nik=nik;
     }
 
     /**
@@ -195,5 +215,22 @@ public class Pasien {
         SimpleDateFormat ft = new SimpleDateFormat("dd-MM-yyyy");
         System.out.print(ft.format(date));
     }
+    
+    
 
+    public static class daftarPasienKlinik {
+
+        public static int size() {
+            throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        }
+
+        public daftarPasienKlinik() {
+        }
+        
+    }
+    public static void tambahPasienBaru(Pasien test) {
+        // listing tambah elemen baru
+        
+    }
+    
 }
