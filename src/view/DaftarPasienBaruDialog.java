@@ -33,6 +33,7 @@ public class DaftarPasienBaruDialog extends JDialog implements ActionListener{
     private JTextField namaText;
     // mendeklarasikan variabel alamatText bertipe data JTextField dan bersifat private
     private JTextField alamatText;
+    private JLabel nikLabel;
     private JTextField nikText;
     private JRadioButton laki;
     private JRadioButton perempuan;
@@ -112,10 +113,18 @@ public class DaftarPasienBaruDialog extends JDialog implements ActionListener{
         // meanmbahkan alamatText
         this.add(alamatText);
         
+       nikLabel=new JLabel("NIK");
+       nikLabel.setBounds(20,200,100,20);
+       this.add(nikLabel);
+       
+       nikText=new JTextField();
+       nikText.setBounds(100, 200, 100, 20);
+       this.add(namaText);
+        
         // mengisi objek saveButton dengan Simpan
         saveButton=new JButton("Simpan");
         // mengeset ukuran tombol yang ingin digunakan
-        saveButton.setBounds(150, 190, 90, 20);
+        saveButton.setBounds(150, 240, 90, 20);
         // meanambahkan saveButton
         this.add(saveButton);
         
