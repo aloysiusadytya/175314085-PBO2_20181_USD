@@ -3,18 +3,20 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package test;
-import view.DaftarPasienBaruDialog;
+package Test;
 
+import view.LatihanDialog;
+import view.MainFrame;
 
 /**
  *
  * @author jarkom
  */
-public class testDaftarPasienBaruDialog {
+public class TestMainFrame {
     public static void main(String[] args) {
-        DaftarPasienBaruDialog testNama= new DaftarPasienBaruDialog();
-        testNama.setSize(400, 500);
-        testNama.setVisible(true);
-}
+        MainFrame test = new MainFrame();
+        test.setSize(500, 400);
+        test.setVisible(true);
+    }
+   
 }

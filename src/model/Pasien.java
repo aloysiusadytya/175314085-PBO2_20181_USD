@@ -232,8 +232,7 @@ public class Pasien {
         
     }
     public static void tambahPasienBaru(Pasien test) {
-        // listing tambah elemen baru
-        
+       Pasien.daftarPasienKlinik.add(test);
     }
     
 }

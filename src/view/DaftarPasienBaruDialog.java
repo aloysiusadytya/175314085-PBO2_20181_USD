@@ -9,6 +9,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.swing.ButtonGroup;
 import javax.swing.JButton;
 import javax.swing.JDialog;
 import javax.swing.JLabel;
@@ -19,9 +20,10 @@ import model.Pasien;
 
 /**
  * membuat method kelas DaftarPasienBaru dengan dengan turunan dari JDialog
+ *
  * @author jarkom
  */
-public class DaftarPasienBaruDialog extends JDialog implements ActionListener{
+public class DaftarPasienBaruDialog extends JDialog implements ActionListener {
 
     // mendeklarasikan variabel judulLabel bertipe data JLabel dan bersifat private
     private JLabel judulLabel;
@@ -39,34 +41,36 @@ public class DaftarPasienBaruDialog extends JDialog implements ActionListener{
     private JRadioButton perempuan;
     // mendeklarasikan variabel saveButton bertipe data JButton dan bersifat private
     private JButton saveButton;
-    
+
     /**
      * membuat constructor DaftarPasienBaruDialog
      */
-    public DaftarPasienBaruDialog(){
+    public DaftarPasienBaruDialog() {
         // memanggil method init
         init();
     }
 
     /**
-     * membuat constructor DaftarPasienBaruDialog dan memiliki parameter title bertipe data String
-     * @param title 
+     * membuat constructor DaftarPasienBaruDialog dan memiliki parameter title
+     * bertipe data String
+     *
+     * @param title
      */
-    public DaftarPasienBaruDialog(String title){
+    public DaftarPasienBaruDialog(String title) {
         // mengeset setTitle yang berisi parameter title
         this.setTitle(title);
         // memanggil method init
         init();
     }
-    
+
     /**
      * membuat method init bertipe data void
      */
     private void init() {
         // mengeset setLayout dengan null
         this.setLayout(null);
-        
-        // mengisi objek judulLabel dengan Form Daftar Antrian
+
+        //mengisi objek judulLabel dengan Form Daftar Antrian
         judulLabel = new JLabel("Form Daftar Antrian");
         // mengeset ukuran label yang ingin digunakan
         judulLabel.setBounds(150, 20, 200, 50);
@@ -91,38 +95,42 @@ public class DaftarPasienBaruDialog extends JDialog implements ActionListener{
         JenisKelamin.setBounds(20, 110, 100, 20);
         this.add(JenisKelamin);
         
-        laki =new JRadioButton("Laki-laki");
+        laki = new JRadioButton("Laki-laki");
         laki.setBounds(120, 110, 100, 20);
         this.add(laki);
         
-        perempuan =new JRadioButton("perempuan");
+        perempuan = new JRadioButton("perempuan");
         perempuan.setBounds(200, 110, 150, 20);
         this.add(perempuan);
         
+        ButtonGroup kelamin = new ButtonGroup();
+        kelamin.add(laki);
+        kelamin.add(perempuan);
+
         // mengisi objek alamatLabel dengan alamat
-        alamatLabel=new JLabel("alamat");
+        alamatLabel = new JLabel("alamat");
         // mengeset ukuran label yang ingin digunakan
         alamatLabel.setBounds(20, 160, 100, 20);
         // menambahkan alamatLabel
         this.add(alamatLabel);
-        
+
         // membuat objek alamatText
-        alamatText=new JTextField();
+        alamatText = new JTextField();
         // mengeset ukuran space text yang ingin digunakan
         alamatText.setBounds(100, 160, 100, 20);
         // meanmbahkan alamatText
         this.add(alamatText);
-        
+
        nikLabel=new JLabel("NIK");
        nikLabel.setBounds(20,200,100,20);
        this.add(nikLabel);
        
-       nikText=new JTextField();
-       nikText.setBounds(100, 200, 100, 20);
-       this.add(namaText);
-        
+        nikText = new JTextField();
+        nikText.setBounds(50, 110, 100, 20);
+        this.add(nikText);
+
         // mengisi objek saveButton dengan Simpan
-        saveButton=new JButton("Simpan");
+        saveButton = new JButton("Simpan");
         // mengeset ukuran tombol yang ingin digunakan
         saveButton.setBounds(150, 240, 90, 20);
         // meanambahkan saveButton
@@ -130,7 +138,8 @@ public class DaftarPasienBaruDialog extends JDialog implements ActionListener{
         
         saveButton.addActionListener(this);
     }
-   public void actionPerformed(ActionEvent e) {
+
+    public void actionPerformed(ActionEvent e) {
         if (e.getSource() == saveButton) {
             Pasien baru = new Pasien();
             baru.setNama(namaText.getText());
@@ -142,11 +151,11 @@ public class DaftarPasienBaruDialog extends JDialog implements ActionListener{
                 Logger.getLogger(DaftarPasienBaruDialog.class.getName()).log(Level.SEVERE, null, ex);
             }
             Pasien.tambahPasienBaru(baru);
-
+            
             JOptionPane.showMessageDialog(null, "Data Disimpan");
-
+            
             this.dispose();
         }
-    
+        
     }
 }

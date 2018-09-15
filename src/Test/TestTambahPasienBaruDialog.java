@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package testPraktikum12September2018;
+package Test;
 
 import view.DaftarPasienBaruDialog;
 

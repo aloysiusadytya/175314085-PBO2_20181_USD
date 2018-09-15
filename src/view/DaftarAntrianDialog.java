@@ -148,8 +148,8 @@ public class DaftarAntrianDialog extends JDialog implements ActionListener{
     }
    
     public void actionPerformed(ActionEvent e) {
-        if (e.getSource() == noRMText) {
-            Pasien cari = Pasien.cariPasien(noRMText.getText());
+        if (e.getSource() == saveButton) {
+            Pasien cari = Pasien.cariPasien(namaText.getText());
             if (cari == null){
                 JOptionPane.showConfirmDialog(null, "Orang Tidak Ada");
             }else{
