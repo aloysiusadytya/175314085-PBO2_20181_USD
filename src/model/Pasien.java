@@ -199,6 +199,7 @@ public class Pasien {
         this.noRekamMedis = noRekamMedis;
     }
 
+    
     public String getNoRekamMedis() {
         return noRekamMedis;
     }
