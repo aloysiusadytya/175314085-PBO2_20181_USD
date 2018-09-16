@@ -230,10 +230,10 @@ public class Pasien {
         Pasien result = null;
         boolean cek = false;
         for (int i = 0; i < daftarPasienKlinik.size() && cek == false; i++) {
-            if (daftarPasienKlinik.get(i).nik.equals(noRekamMedis)){
-            cek = true;
-            result = daftarPasienKlinik.get(i);
-        }
+            if (daftarPasienKlinik.get(i).nik.equals(noRekamMedis)) {
+                cek = true;
+                result = daftarPasienKlinik.get(i);
+            }
         }
         return result;
     }

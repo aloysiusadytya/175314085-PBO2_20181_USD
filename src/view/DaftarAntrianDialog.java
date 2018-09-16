@@ -131,6 +131,7 @@ public class DaftarAntrianDialog extends JDialog implements ActionListener {
 
     }
 
+    @Override
     public void actionPerformed(ActionEvent e) {
         if (e.getSource() == noRekamMedis) {
             Pasien cari = Pasien.cariPasien(noRekamMedis.getText());
