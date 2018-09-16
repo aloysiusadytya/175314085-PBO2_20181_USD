@@ -21,7 +21,7 @@ public class MainFrame extends JFrame implements ActionListener {
     private JMenuItem DaftarPasienBaruMenuItem;
     private JMenuItem DaftarAntrianPasienMenuItem;
 
-    public MainFrame() throws HeadlessException {
+    public MainFrame() {
         init();
     }
 

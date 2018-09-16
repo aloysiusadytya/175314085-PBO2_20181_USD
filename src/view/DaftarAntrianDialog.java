@@ -9,7 +9,6 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import javax.swing.JDialog;
 import javax.swing.JButton;
-import javax.swing.JComboBox;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JTextField;
@@ -37,7 +36,7 @@ public class DaftarAntrianDialog extends JDialog implements ActionListener {
     // mendeklarasikan variabel alamatText bertipe data JTextField dan bersifat private
     private JTextField alamatText;
     // mendeklarasikan variabel saveButton bertipe data JButton dan bersifat private
-    private JButton saveButton;
+    private JButton OKButton;
 
     /**
      * membuat constructor daftarAntrianDialog
@@ -123,26 +122,16 @@ public class DaftarAntrianDialog extends JDialog implements ActionListener {
         alamatText.addActionListener(this);
 
         // mengisi objek saveButton dengan Simpan
-        saveButton = new JButton("OK");
+        OKButton = new JButton("OK");
         // mengeset ukuran tombol yang ingin digunakan
-        saveButton.setBounds(150, 200, 90, 20);
+        OKButton.setBounds(150, 200, 90, 20);
         // meanambahkan saveButton
-        this.add(saveButton);
-        saveButton.addActionListener(this);
+        this.add(OKButton);
+        OKButton.addActionListener(this);
 
     }
 
     public void actionPerformed(ActionEvent e) {
-        if (e.getSource() == saveButton) {
-            Pasien cari = Pasien.cariPasien(namaText.getText());
-            for (int i = 0; i < Pasien.daftarPasienKlinik.size(); i++) {
-                if (cari == Pasien.daftarPasienKlinik.get(i)) {
-                    JOptionPane.showMessageDialog(null, "Nomor Antrian Anda : " + (i + 1));
-                    
-                    this.dispose();
-                }
-            }
-        }
         if (e.getSource() == noRekamMedis) {
             Pasien cari = Pasien.cariPasien(noRekamMedis.getText());
             if (cari == null) {
@@ -152,6 +141,15 @@ public class DaftarAntrianDialog extends JDialog implements ActionListener {
                 alamatText.setText(cari.getAlamat());
             }
         }
-
+        if (e.getSource() == OKButton) {
+            Pasien cari = Pasien.cariPasien(noRekamMedis.getText());
+            for (int i = 0; i < Pasien.daftarPasienKlinik.size(); i++) {
+                if (cari == Pasien.daftarPasienKlinik.get(i)) {
+                    JOptionPane.showMessageDialog(null, "Nomor Antrian Anda : " + (i + 1));
+                    
+                    this.dispose();
+                }
+            }
+        }
     }
 }

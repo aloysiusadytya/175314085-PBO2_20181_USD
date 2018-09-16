@@ -6,6 +6,7 @@
 package Test;
 
 import view.MainFrame;
+import javax.swing.JFrame;
 
 /**
  *
@@ -16,5 +17,7 @@ public class TestMainFramee {
         MainFrame test = new MainFrame();
         test.setSize(600, 400);
         test.setVisible(true);
+        test.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+
     }
 }

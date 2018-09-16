@@ -26,7 +26,6 @@ public class Pasien {
     private int tahunLahir;
     private String noRekamMedis;
 
-    
     public static ArrayList<Pasien> daftarPasienKlinik
             = new ArrayList<Pasien>();
 
@@ -212,6 +211,7 @@ public class Pasien {
     public String getNik() {
         return nik;
     }
+
     /**
      * method ini digunakan untuk memanggil tanggal, bulan, dan tahun kelahiran
      * pasien
@@ -225,17 +225,17 @@ public class Pasien {
     public static void tambahPasienBaru(Pasien test) {
         daftarPasienKlinik.add(test);
     }
-    
-    public static Pasien cariPasien(String noRekamMedis) {
-        for (int i = 0; i < daftarPasienKlinik.size(); i++) {
-            if (noRekamMedis == null ? daftarPasienKlinik.get(i).getNoRekamMedis() == null
-                    : noRekamMedis.equals(daftarPasienKlinik.get(i).getNoRekamMedis())) {
-                return daftarPasienKlinik.get(i);
-            }
-        }
-        return null;
-    }
 
-    
+    public static Pasien cariPasien(String noRekamMedis) {
+        Pasien result = null;
+        boolean cek = false;
+        for (int i = 0; i < daftarPasienKlinik.size() && cek == false; i++) {
+            if (daftarPasienKlinik.get(i).nik.equals(noRekamMedis)){
+            cek = true;
+            result = daftarPasienKlinik.get(i);
+        }
+        }
+        return result;
+    }
 
 }

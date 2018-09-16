@@ -6,7 +6,7 @@
 package Test;
 
 import view.DaftarAntrianDialog;
-import view.LatihanDialog;
+import javax.swing.JFrame;
 
 /**
  *
