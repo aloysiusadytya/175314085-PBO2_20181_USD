@@ -223,14 +223,20 @@ public class Pasien {
         System.out.print(ft.format(date));
     }
 
+    // Membuat method tambahPasienBaru bertipe data void dengan parameter test bertipe Pasien
     public static void tambahPasienBaru(Pasien test) {
         daftarPasienKlinik.add(test);
     }
 
+    // membuat method cariPasien bertipe data Pasien dengan parameter noRekamMedis bertipe String
     public static Pasien cariPasien(String noRekamMedis) {
+        // mendeklarasikan result berisi null bertipe Pasien
         Pasien result = null;
+        // membuat boolean cek sama dengan false
         boolean cek = false;
+        //membuat perulangan
         for (int i = 0; i < daftarPasienKlinik.size() && cek == false; i++) {
+            // menggunakan fungsi if
             if (daftarPasienKlinik.get(i).nik.equals(noRekamMedis)) {
                 cek = true;
                 result = daftarPasienKlinik.get(i);

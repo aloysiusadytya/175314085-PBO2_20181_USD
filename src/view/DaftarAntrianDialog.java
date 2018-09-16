@@ -131,9 +131,15 @@ public class DaftarAntrianDialog extends JDialog implements ActionListener {
 
     }
 
+    /**
+     * membuat method actionPerformed
+     * @param e 
+     */
     @Override
     public void actionPerformed(ActionEvent e) {
+        // menggunakan fungsi if berisi jika variabel e sama dengan noRekamMedis maka program berjalan
         if (e.getSource() == noRekamMedis) {
+            // membuat objek cari bernilai 
             Pasien cari = Pasien.cariPasien(noRekamMedis.getText());
             if (cari == null) {
                 JOptionPane.showMessageDialog(null, "Data Pasien " + noRekamMedis.getText() + " Pasien Tidak Ada");
