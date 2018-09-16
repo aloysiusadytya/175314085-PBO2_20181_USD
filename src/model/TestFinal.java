@@ -66,7 +66,7 @@ public class TestFinal {
             System.out.println("Alamat          : " + urutan.getUrutanPasien().get(i).getAlamat());
             System.out.print("Tempat Tanggal Lahir : " + urutan.getUrutanPasien().get(i).getTempatLahir());
             System.out.print(" , ");
-//            urutan.getUrutanPasien().get(i).getKelahiran();
+            urutan.getUrutanPasien().get(i).getKelahiran();
             System.out.println("");
 
             System.out.print("No Rekam Medis  : " + urutan.getUrutanPasien().get(i).getNoRekamMedis());
