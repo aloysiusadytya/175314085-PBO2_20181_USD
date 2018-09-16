@@ -18,8 +18,8 @@ public class MainFrame extends JFrame implements ActionListener {
     private JMenuBar menuBar;
     private JMenu fileMenu;
     private JMenuItem exitMenuItem;
-    private JMenuItem tambahPasienMenuItem;
-    private JMenuItem tambahAntrianPasienMenuItem;
+    private JMenuItem DaftarPasienBaruMenuItem;
+    private JMenuItem DaftarAntrianPasienMenuItem;
 
     public MainFrame() throws HeadlessException {
         init();
@@ -33,16 +33,16 @@ public class MainFrame extends JFrame implements ActionListener {
         // buat menu
         fileMenu = new JMenu("File");
         exitMenuItem = new JMenuItem("exit");
-        tambahPasienMenuItem = new JMenuItem("TambahPasien");
-        fileMenu.add(tambahPasienMenuItem);
-        tambahAntrianPasienMenuItem = new JMenuItem("TambahAntrian");
-        fileMenu.add(tambahAntrianPasienMenuItem);
+        DaftarPasienBaruMenuItem = new JMenuItem("TambahPasien");
+        fileMenu.add(DaftarPasienBaruMenuItem);
+        DaftarAntrianPasienMenuItem = new JMenuItem("TambahAntrian");
+        fileMenu.add(DaftarAntrianPasienMenuItem);
         fileMenu.add(exitMenuItem);
         menuBar.add(fileMenu);
 
         exitMenuItem.addActionListener(this);
-        tambahPasienMenuItem.addActionListener(this);
-        tambahAntrianPasienMenuItem.addActionListener(this);
+        DaftarPasienBaruMenuItem.addActionListener(this);
+        DaftarAntrianPasienMenuItem.addActionListener(this);
 
         this.setJMenuBar(menuBar);
     }
@@ -52,19 +52,17 @@ public class MainFrame extends JFrame implements ActionListener {
         if (e.getSource() == exitMenuItem) {
             System.exit(0);
         }
-        if (e.getSource() == tambahPasienMenuItem) {
+        if (e.getSource() == DaftarPasienBaruMenuItem) {
             DaftarPasienBaruDialog test = new DaftarPasienBaruDialog();
-            test.setSize(300, 400);
+            test.setSize(600, 400);
             test.setVisible(true);
         }
-        if (e.getSource() == tambahAntrianPasienMenuItem) {
+        if (e.getSource() == DaftarAntrianPasienMenuItem) {
             DaftarAntrianDialog test = new DaftarAntrianDialog();
-            test.setSize(300, 400);
+            test.setSize(600, 400);
             test.setVisible(true);
 
         }
-        if (e.getSource() == exitMenuItem) {
-            System.exit(0);
-        }
+       
     }
 }

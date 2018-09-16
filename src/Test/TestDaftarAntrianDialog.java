@@ -5,16 +5,17 @@
  */
 package Test;
 
-import view.DaftarPasienBaruDialog;
+import view.DaftarAntrianDialog;
+import view.LatihanDialog;
 
 /**
  *
  * @author admin
  */
-public class TestTambahPasienBaruDialog {
+public class TestDaftarAntrianDialog {
     public static void main(String[] args) {
-        DaftarPasienBaruDialog test = new DaftarPasienBaruDialog();
-        test.setSize(500, 400);
+        DaftarAntrianDialog test = new DaftarAntrianDialog();
+        test.setSize(600, 400);
         test.setVisible(true);
     }
 }

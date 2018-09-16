@@ -14,6 +14,7 @@ import java.util.Date;
  * @author Hewlett-Packard
  */
 public class Pasien {
+
     /**
      * mendeklarasikan variabel yang diperlukan untuk mengisi data dari pasien
      */
@@ -24,33 +25,26 @@ public class Pasien {
     private int bulanLahir;
     private int tahunLahir;
     private String noRekamMedis;
-    private String nik;
 
-    public void setNik(String nik) {
-        this.nik = nik;
-    }
-
-    public String getNik() {
-        return nik;
-    }
-    public static ArrayList<Pasien> daftarPasienKlinik = 
-            new ArrayList<Pasien>();
     
+    public static ArrayList<Pasien> daftarPasienKlinik
+            = new ArrayList<Pasien>();
+
     /**
      * object pasien2 dideklarasikan lewat konstruktor
      */
     public Pasien() {
 
     }
-    
-    public Pasien(String nama,String alamat,String tempatLahir,int tanggalLahir,int bulanLahir,int tahunLahir,String nik){
-        this.nama=nama;
-        this.alamat=alamat;
-        this.tempatLahir=tempatLahir;
-        this.tanggalLahir=tanggalLahir;
-        this.bulanLahir=bulanLahir;
-        this.tahunLahir=tahunLahir;
-        this.nik=nik;
+
+    public Pasien(String nama, String alamat, String tempatLahir, int tanggalLahir, int bulanLahir, int tahunLahir, String nik) {
+        this.nama = nama;
+        this.alamat = alamat;
+        this.tempatLahir = tempatLahir;
+        this.tanggalLahir = tanggalLahir;
+        this.bulanLahir = bulanLahir;
+        this.tahunLahir = tahunLahir;
+        this.nik = nik;
     }
 
     /**
@@ -190,23 +184,34 @@ public class Pasien {
      *
      * @return
      */
-    public String getNoRekamMedis() {
+    public String NoRekamMedis() {
         String noRekamMedis;
         Date date = new Date();
-        SimpleDateFormat ft = new SimpleDateFormat("yyyMMdd");
+        SimpleDateFormat ft = new SimpleDateFormat("yyyyMMdd");
         noRekamMedis = ft.format(date) + nama.substring(0, 3);
-
         return noRekamMedis;
     }
 
     /**
-     * method ini digunakan untuk memasukkan nilai dari variabel noRekamMedis dengan
-     * parameter lokal dengan tipe String
+     * method ini digunakan untuk memasukkan nilai dari variabel noRekamMedis
+     * dengan parameter lokal dengan tipe String
      */
     public void setNoRekamMedis(String noRekamMedis) {
         this.noRekamMedis = noRekamMedis;
     }
 
+    public String getNoRekamMedis() {
+        return noRekamMedis;
+    }
+    private String nik;
+
+    public void setNik(String nik) {
+        this.nik = nik;
+    }
+
+    public String getNik() {
+        return nik;
+    }
     /**
      * method ini digunakan untuk memanggil tanggal, bulan, dan tahun kelahiran
      * pasien
@@ -216,23 +221,21 @@ public class Pasien {
         SimpleDateFormat ft = new SimpleDateFormat("dd-MM-yyyy");
         System.out.print(ft.format(date));
     }
-    
-    public static Pasien cariPasien(String string) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
 
-    public static class daftarPasienKlinik {
-
-        public static int size() {
-            throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-        }
-
-        public daftarPasienKlinik() {
-        }
-        
-    }
     public static void tambahPasienBaru(Pasien test) {
-       Pasien.daftarPasienKlinik.add(test);
+        daftarPasienKlinik.add(test);
     }
     
+    public static Pasien cariPasien(String noRekamMedis) {
+        for (int i = 0; i < daftarPasienKlinik.size(); i++) {
+            if (noRekamMedis == null ? daftarPasienKlinik.get(i).getNoRekamMedis() == null
+                    : noRekamMedis.equals(daftarPasienKlinik.get(i).getNoRekamMedis())) {
+                return daftarPasienKlinik.get(i);
+            }
+        }
+        return null;
+    }
+
+    
+
 }

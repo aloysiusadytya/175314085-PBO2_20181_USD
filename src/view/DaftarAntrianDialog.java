@@ -17,9 +17,10 @@ import model.Pasien;
 
 /**
  * membuat method kelas daftarAntrianDialog dengan dengan turunan dari JDialog
+ *
  * @author jarkom
  */
-public class DaftarAntrianDialog extends JDialog implements ActionListener{
+public class DaftarAntrianDialog extends JDialog implements ActionListener {
 
     // mendeklarasikan variabel judulLabel bertipe data JLabel dan bersifat private
     private JLabel judulLabel;
@@ -32,7 +33,7 @@ public class DaftarAntrianDialog extends JDialog implements ActionListener{
     // mendeklarasikan variabel namaText bertipe data JTextField dan bersifat private
     private JTextField namaText;
     // mendeklarasikan variabel noRMText bertipe data JTextField dan bersifat private
-    private JTextField noRMText;
+    private JTextField noRekamMedis;
     // mendeklarasikan variabel alamatText bertipe data JTextField dan bersifat private
     private JTextField alamatText;
     // mendeklarasikan variabel saveButton bertipe data JButton dan bersifat private
@@ -47,8 +48,10 @@ public class DaftarAntrianDialog extends JDialog implements ActionListener{
     }
 
     /**
-     * membuat constructor dafatrAntrianDialog dan memiliki parameter title bertipe data String
-     * @param title 
+     * membuat constructor dafatrAntrianDialog dan memiliki parameter title
+     * bertipe data String
+     *
+     * @param title
      */
     public DaftarAntrianDialog(String title) {
         // mengeset setTitle yang berisi parameter title
@@ -63,7 +66,7 @@ public class DaftarAntrianDialog extends JDialog implements ActionListener{
     public void init() {
         // mengeset setLayout dengan null
         this.setLayout(null);
-        
+
         // mengisi objek judulLabel dengan Form Daftar Antrian
         judulLabel = new JLabel("Form Daftar Antrian");
         // mengeset ukuran label yang ingin digunakan
@@ -84,91 +87,71 @@ public class DaftarAntrianDialog extends JDialog implements ActionListener{
         namaText.setBounds(100, 70, 100, 20);
         // menambahkan namaText
         this.add(namaText);
-        
+
         namaText.addActionListener(this);
-        
+
         // mengisi objek noRMLabel dengan NO RM
-        noRMLabel=new JLabel("No RM");
+        noRMLabel = new JLabel("No RM");
         // mengeset ukuran label yang ingin digunakan
         noRMLabel.setBounds(20, 100, 100, 20);
         // mena,bahkan noRMLabel
         this.add(noRMLabel);
-        
+
         // membuat objek noRMText
-        noRMText=new JTextField();
+        noRekamMedis = new JTextField();
         // mengeset ukuran space text yang ingin digunakan
-        noRMText.setBounds(100, 100, 100, 20);
+        noRekamMedis.setBounds(100, 100, 100, 20);
         // menambahkan noRMText
-        this.add(noRMText);
-        
-        noRMText.addActionListener(this);
-        
-        JLabel tanggaLahirLabel = new JLabel("Tanggal Lahir");
-        tanggaLahirLabel.setBounds(20, 160, 100, 20);
-        this.add(tanggaLahirLabel);
+        this.add(noRekamMedis);
 
-        JComboBox tanggalCombo = new JComboBox();
-        tanggalCombo.setBounds(150, 160, 100, 20);
-        this.add(tanggalCombo);
+        noRekamMedis.addActionListener(this);
 
-        JComboBox bulanCombo = new JComboBox();
-        bulanCombo.setBounds(250, 160, 80, 20);
- 
-        this.add(bulanCombo);
-
-        JComboBox tahunCombo = new JComboBox();
-        tahunCombo.setBounds(350, 160, 80, 20);
-        this.add(tahunCombo);
-        
         // mengisi objek alamatLabel dengan alamat
-        alamatLabel=new JLabel("alamat");
+        alamatLabel = new JLabel("alamat");
         // mengeset ukuran label yang ingin digunakan
         alamatLabel.setBounds(20, 130, 100, 20);
         // menambahkan alamatLabel
         this.add(alamatLabel);
-        
+
         // membuat objek alamatText
-        alamatText=new JTextField();
+        alamatText = new JTextField();
         // mengeset ukuran space text yang ingin digunakan
         alamatText.setBounds(100, 130, 100, 20);
         // meanmbahkan alamatText
         this.add(alamatText);
-        
+
         alamatText.addActionListener(this);
-        
-        
+
         // mengisi objek saveButton dengan Simpan
-        saveButton=new JButton("Simpan");
+        saveButton = new JButton("OK");
         // mengeset ukuran tombol yang ingin digunakan
         saveButton.setBounds(150, 200, 90, 20);
         // meanambahkan saveButton
         this.add(saveButton);
         saveButton.addActionListener(this);
-        
+
     }
-   
+
     public void actionPerformed(ActionEvent e) {
         if (e.getSource() == saveButton) {
             Pasien cari = Pasien.cariPasien(namaText.getText());
-            if (cari == null){
-                JOptionPane.showConfirmDialog(null, "Orang Tidak Ada");
-            }else{
-                namaText.setText(cari.getNama());
+            for (int i = 0; i < Pasien.daftarPasienKlinik.size(); i++) {
+                if (cari == Pasien.daftarPasienKlinik.get(i)) {
+                    JOptionPane.showMessageDialog(null, "Nomor Antrian Anda : " + (i + 1));
+                    
+                    this.dispose();
+                }
             }
         }
-        if (e.getSource() == namaText) {
-            JOptionPane.showMessageDialog(null, namaText.getText());
+        if (e.getSource() == noRekamMedis) {
+            Pasien cari = Pasien.cariPasien(noRekamMedis.getText());
+            if (cari == null) {
+                JOptionPane.showMessageDialog(null, "Data Pasien " + noRekamMedis.getText() + " Pasien Tidak Ada");
+            } else {
+                namaText.setText(cari.getNama());
+                alamatText.setText(cari.getAlamat());
+            }
         }
-        if (e.getSource() == alamatText) {
-            JOptionPane.showMessageDialog(null, alamatText.getText());
-        }if (e.getSource() == saveButton) {
-            Pasien baru = new Pasien();
-            baru.setNama(namaText.getText());
-            baru.setAlamat(alamatText.getText());
-            
-            Pasien.tambahPasienBaru(baru);
-            
-            JOptionPane.showMessageDialog(null, "Data Disimpan");
-        }
+
     }
 }

@@ -7,10 +7,13 @@ package view;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.ButtonGroup;
 import javax.swing.JButton;
+import javax.swing.JComboBox;
 import javax.swing.JDialog;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
@@ -100,39 +103,56 @@ public class DaftarPasienBaruDialog extends JDialog implements ActionListener {
         this.add(laki);
         
         perempuan = new JRadioButton("perempuan");
-        perempuan.setBounds(200, 110, 150, 20);
+        perempuan.setBounds(220, 110, 150, 20);
         this.add(perempuan);
         
         ButtonGroup kelamin = new ButtonGroup();
         kelamin.add(laki);
         kelamin.add(perempuan);
+        
+        JLabel tanggaLahirLabel = new JLabel("Tanggal Lahir");
+        tanggaLahirLabel.setBounds(20, 150, 100, 20);
+        this.add(tanggaLahirLabel);
+
+        JComboBox tanggalCombo = new JComboBox();
+        tanggalCombo.setBounds(150, 150, 80, 20);
+        this.add(tanggalCombo);
+
+        JComboBox bulanCombo = new JComboBox();
+        bulanCombo.setBounds(250, 150, 80, 20);
+ 
+        this.add(bulanCombo);
+
+        JComboBox tahunCombo = new JComboBox();
+        tahunCombo.setBounds(350, 150, 80, 20);
+        this.add(tahunCombo);
 
         // mengisi objek alamatLabel dengan alamat
         alamatLabel = new JLabel("alamat");
         // mengeset ukuran label yang ingin digunakan
-        alamatLabel.setBounds(20, 160, 100, 20);
+        alamatLabel.setBounds(20, 190, 100, 20);
         // menambahkan alamatLabel
         this.add(alamatLabel);
 
         // membuat objek alamatText
         alamatText = new JTextField();
         // mengeset ukuran space text yang ingin digunakan
-        alamatText.setBounds(100, 160, 100, 20);
+        alamatText.setBounds(100, 190, 100, 20);
         // meanmbahkan alamatText
         this.add(alamatText);
 
        nikLabel=new JLabel("NIK");
-       nikLabel.setBounds(20,200,100,20);
+       nikLabel.setBounds(20,230,100,20);
        this.add(nikLabel);
        
         nikText = new JTextField();
-        nikText.setBounds(50, 110, 100, 20);
+        nikText.setBounds(100, 230, 100, 20);
         this.add(nikText);
 
         // mengisi objek saveButton dengan Simpan
         saveButton = new JButton("Simpan");
         // mengeset ukuran tombol yang ingin digunakan
-        saveButton.setBounds(150, 240, 90, 20);
+        saveButton.setBounds(150, 270, 90, 20);
         // meanambahkan saveButton
         this.add(saveButton);
         
@@ -145,11 +165,7 @@ public class DaftarPasienBaruDialog extends JDialog implements ActionListener {
             baru.setNama(namaText.getText());
             baru.setAlamat(alamatText.getText());
             baru.setNik(nikText.getText());
-            try {
-                baru.setNoRekamMedis(nikText.getText());
-            } catch (Exception ex) {
-                Logger.getLogger(DaftarPasienBaruDialog.class.getName()).log(Level.SEVERE, null, ex);
-            }
+            
             Pasien.tambahPasienBaru(baru);
             
             JOptionPane.showMessageDialog(null, "Data Disimpan");
