@@ -47,13 +47,13 @@ public class DaftarPasienBaruDialog extends JDialog implements ActionListener {
     private JRadioButton perempuan;
     // mendeklarasikan variabel saveButton bertipe data JButton dan bersifat private
     private JButton saveButton;
-    private String ArrayTanggal[] = {"1", "2", "3", "4", "5", "6", "7", "8", "9",
+    private String ArrayTanggal[] = {"Tanggal","1", "2", "3", "4", "5", "6", "7", "8", "9",
         "10", "11", "12", "13", "14", "15", "16", "17", "18",
         "19", "20", "21", "22", "23", "24", "25", "26", "27",
         "28", "29", "30", "31"};
-    private String ArrayBulan[] = {"1", "2", "3", "4", "5", "6", "7", "8", "9", "10",
+    private String ArrayBulan[] = {"Bulan","1", "2", "3", "4", "5", "6", "7", "8", "9", "10",
         "11", "12"};
-    private String ArrayTahun[] = {"1900", "1901", "1902", "1903", "1904", "1905", "1906", "1907", "1908", "1909", "1910", "1911",
+    private String ArrayTahun[] = {"Tahun","1900", "1901", "1902", "1903", "1904", "1905", "1906", "1907", "1908", "1909", "1910", "1911",
         "1912", "1913", "1914", "1915", "1916", "1917", "1918", "1918", "1919", "1920", "1921", "1922", "1923", "1924", 
         "1925", "1926", "1927", "1928", "1929", "1930", "1931", "1932", "1933", "1934", "1935", "1936", "1937", "1938", 
         "1939", "1940", "1941", "1942", "1943", "1944", "1945", "1946", "1947", "1948", "1949", "1950", "1951", "1952", 
@@ -184,7 +184,6 @@ public class DaftarPasienBaruDialog extends JDialog implements ActionListener {
             baru.setNik(nikText.getText());
             Pasien.tambahPasienBaru(baru);
             JOptionPane.showMessageDialog(null, "Data Disimpan");
-
             this.dispose();
         }
 
