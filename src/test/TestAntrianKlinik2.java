@@ -7,6 +7,7 @@ package test;
 
 import model.AntrianKlinik;
 import model.Klinik;
+import model.Pasien;
 
 /**
  *
@@ -35,6 +36,7 @@ public class TestAntrianKlinik2 {
             System.out.println(AntrianKlinik.
                     daftarAntrian.get(i));
         }
+        
     }
     
 }

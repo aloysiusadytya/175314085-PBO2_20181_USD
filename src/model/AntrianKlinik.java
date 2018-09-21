@@ -74,8 +74,9 @@ public class AntrianKlinik {
         this.bulanAntrian = bulanAntrian;
         this.tahunAntrian = tahunAntrian;
         this.klinik = klinik;
+        
     }
-
+    
     public ArrayList<AntrianKlinik> getDaftarPasien() {
         //pengambalian nilai dari variabel urutanPasien
         return daftarAntrian;
@@ -110,9 +111,11 @@ public class AntrianKlinik {
 
     }
 
-    public Pasien cariPasien(String noRM, int tanggal, int bulan, int tahun) {
-
-        return cariPasien(noRM, tanggal, bulan, tahun);
+    public static Pasien cariPasien(String noRM) {
+       
+        return null;
+        
+        
     }
 
     public static void buatAntrian(int tanggal, int bulan, int tahun, Klinik klinik) {
@@ -122,7 +125,7 @@ public class AntrianKlinik {
         antrian.setTahunAntrian(tahun);
         antrian.setKlinik(klinik);
         // tambah dalam list antrian
-        if (cariAntrian(tanggal, bulan, tahun, klinik) == null) {
+        if (cariAntrian(tanggal, bulan, tahun, klinik) <0) {
             // tambah dalam list antrian
             daftarAntrian.add(antrian);
         } else {
@@ -130,17 +133,17 @@ public class AntrianKlinik {
         }
     }
 
-    public static AntrianKlinik cariAntrian(int tanggalAntrian, int bulanAntrian, int tahunAntrian, Klinik klinik) {
+    public static int cariAntrian(int tanggalAntrian, int bulanAntrian, int tahunAntrian, Klinik klinik) {
         for (int i = 0; i < daftarAntrian.size(); i++) {
             if (daftarAntrian.get(i).getTanggalAntrian() == tanggalAntrian
                     && daftarAntrian.get(i).getBulanAntrian() == bulanAntrian
                     && daftarAntrian.get(i).getTahunAntrian() == tahunAntrian
                     && daftarAntrian.get(i).getKlinik().getIdKlinik().equalsIgnoreCase(klinik.getIdKlinik())
                     && daftarAntrian.get(i).getKlinik().getNamaKlinik().equalsIgnoreCase(klinik.getNamaKlinik())) {
-                return daftarAntrian.get(i);
+                return 1;
             }
         }
-        return null;
+        return -1;
     }
 
     public String toString() {
