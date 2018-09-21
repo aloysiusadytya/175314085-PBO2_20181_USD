@@ -36,8 +36,8 @@ public class TestKelasPasien {
         Pasien.tambahPasienBaru(test);
         Pasien.tambahPasienBaru(test1);
         
-        for (int i = 0; i < Pasien.daftarPasienKlinik.size(); i++) {
-            System.out.println("Nama : "+Pasien.daftarPasienKlinik.get(i).getNama());
+        for (int i = 0; i < Pasien.daftarPasien.size(); i++) {
+            System.out.println("Nama : "+Pasien.daftarPasien.get(i).getNama());
         }
         
         Pasien cari = Pasien.cariPasien("19990110");

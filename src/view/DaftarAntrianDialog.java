@@ -150,8 +150,8 @@ public class DaftarAntrianDialog extends JDialog implements ActionListener {
         }
         if (e.getSource() == OKButton) {
             Pasien cari = Pasien.cariPasien(noRekamMedis.getText());
-            for (int i = 0; i < Pasien.daftarPasienKlinik.size(); i++) {
-                if (cari == Pasien.daftarPasienKlinik.get(i)) {
+            for (int i = 0; i < Pasien.daftarPasien.size(); i++) {
+                if (cari == Pasien.daftarPasien.get(i)) {
                     JOptionPane.showMessageDialog(null, "Nomor Antrian Anda : " + (i + 1));
                     
                     this.dispose();

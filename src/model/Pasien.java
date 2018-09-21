@@ -26,8 +26,16 @@ public class Pasien {
     private int tahunLahir;
     private String noRekamMedis;
 
-    public static ArrayList<Pasien> daftarPasienKlinik
+    public static ArrayList<Pasien> daftarPasien
             = new ArrayList<Pasien>();
+
+    public static ArrayList<Pasien> getDaftarPasienKlinik() {
+        return daftarPasien;
+    }
+
+    public static void setDaftarPasienKlinik(ArrayList<Pasien> daftarPasienKlinik) {
+        Pasien.daftarPasien = daftarPasienKlinik;
+    }
 
     /**
      * object pasien2 dideklarasikan lewat konstruktor
@@ -225,7 +233,7 @@ public class Pasien {
 
     // Membuat method tambahPasienBaru bertipe data void dengan parameter test bertipe Pasien
     public static void tambahPasienBaru(Pasien test) {
-        daftarPasienKlinik.add(test);
+        daftarPasien.add(test);
     }
 
     // membuat method cariPasien bertipe data Pasien dengan parameter noRekamMedis bertipe String
@@ -235,11 +243,11 @@ public class Pasien {
         // membuat boolean cek sama dengan false
         boolean cek = false;
         //membuat perulangan
-        for (int i = 0; i < daftarPasienKlinik.size() && cek == false; i++) {
+        for (int i = 0; i < daftarPasien.size() && cek == false; i++) {
             // menggunakan fungsi if
-            if (daftarPasienKlinik.get(i).nik.equals(noRekamMedis)) {
+            if (daftarPasien.get(i).nik.equals(noRekamMedis)) {
                 cek = true;
-                result = daftarPasienKlinik.get(i);
+                result = daftarPasien.get(i);
             }
         }
         return result;

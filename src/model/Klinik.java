@@ -5,20 +5,42 @@
  */
 package model;
 
+import java.util.ArrayList;
+
 /**
  *
  * @author jarkom
  */
 public class Klinik {
 
+    public static ArrayList<Klinik> daftarKlinik = new ArrayList<Klinik>();
+
+    public static void tambahKlinik(Klinik klinik) {
+        daftarKlinik.add(klinik);
+    }
+
+    public static Klinik cariKlinik(String namaKlinik) {
+        for (int i = 0; i < daftarKlinik.size(); i++) {
+            if (daftarKlinik.get(i).getNamaKlinik().equalsIgnoreCase(namaKlinik)) {
+                return daftarKlinik.get(i);
+            }
+        }
+        return null;
+    }
+
     private String idKlinik;
-    private String nama;
+    private String namaKlinik;
 
     /**
      * object Klinik dideklarasikan lewat konstruktor
      */
     public Klinik() {
 
+    }
+    
+    public Klinik(String idKlinik, String namaKlinik) {
+        this.idKlinik = idKlinik;
+        this.namaKlinik = namaKlinik;
     }
 
     /**
@@ -45,8 +67,8 @@ public class Klinik {
      *
      * @return
      */
-    public String getNama() {
-        return nama;
+    public String getNamaKlinik() {
+        return namaKlinik;
     }
 
     /**
@@ -56,7 +78,7 @@ public class Klinik {
      * @param nama
      */
     public void setNama(String nama) {
-        this.nama = nama;
+        this.namaKlinik = nama;
     }
 
 }
