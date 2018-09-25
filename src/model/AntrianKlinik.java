@@ -22,11 +22,11 @@ public class AntrianKlinik {
      */
     public static ArrayList<AntrianKlinik> daftarAntrian = new ArrayList<AntrianKlinik>();
     private static ArrayList<Pasien> PasienAntri = new ArrayList<Pasien>();
-
+    
     public static ArrayList<Pasien> getPasienAntri() {
         return PasienAntri;
     }
-
+    
     public static void setPasienAntri(ArrayList<Pasien> PasienAntri) {
         AntrianKlinik.PasienAntri = PasienAntri;
     }
@@ -35,28 +35,27 @@ public class AntrianKlinik {
     private int tanggalAntrian;
     private int bulanAntrian;
     private int tahunAntrian;
-
-
+    
     public int getTanggalAntrian() {
         return tanggalAntrian;
     }
-
+    
     public void setTanggalAntrian(int tanggalAntrian) {
         this.tanggalAntrian = tanggalAntrian;
     }
-
+    
     public int getBulanAntrian() {
         return bulanAntrian;
     }
-
+    
     public void setBulanAntrian(int bulanAntrian) {
         this.bulanAntrian = bulanAntrian;
     }
-
+    
     public int getTahunAntrian() {
         return tahunAntrian;
     }
-
+    
     public void setTahunAntrian(int tahunAntrian) {
         this.tahunAntrian = tahunAntrian;
     }
@@ -67,9 +66,9 @@ public class AntrianKlinik {
      *
      */
     public AntrianKlinik() {
-
+        
     }
-
+    
     public AntrianKlinik(int tanggalAntrian, int bulanAntrian, int tahunAntrian, Klinik klinik) {
         this.tanggalAntrian = tanggalAntrian;
         this.bulanAntrian = bulanAntrian;
@@ -77,12 +76,7 @@ public class AntrianKlinik {
         this.klinik = klinik;
         
     }
-
-//    public void setDaftarPasien(ArrayList<Pasien> urutanPasien) {
-//        // pernyataan bahwa nilai dari variabel daftarPasien sama dengan nilai dari variabel lokal daftarPasien
-//        this.daftarAntrian = daftarAntrian;
-//    }
-
+    
     public void setKlinik(Klinik klinik) {
         this.klinik = klinik;
     }
@@ -95,28 +89,23 @@ public class AntrianKlinik {
     public Klinik getKlinik() {
         return klinik;
     }
-
+    
     public void Mendaftar(Pasien pasien) {
         // mengisi data pada variabel daftarPasien dengan variabel lokal daftarPasien 
-        PasienAntri.add(pasien);
+        this.PasienAntri.add(pasien);
     }
 
+    // cari antrian klinik,jika ada fungsi mendaftar dari objek antrian
+    // jika tidak ada buat antrian baru 
     public static void daftarPasien(Pasien pasien, int tanggal, int bulan, int tahun, Klinik klinik) {
-        // cari antrian klinik,jika ada fungsi mendaftar dari objek antrian
-        // jika tidak ada buat antrian baru 
-        
-        if(cariAntrian(tanggal, bulan, tahun, klinik)<0){
-            AntrianKlinik.daftarAntrian.get(cariAntrian(tanggal, bulan, tahun, klinik)).Mendaftar(pasien);
-        }else{
-            AntrianKlinik antrian = new AntrianKlinik();
-            antrian.setTanggalAntrian(tanggal);
-            antrian.setBulanAntrian(bulan);
-            antrian.setTahunAntrian(tahun);
-            antrian.setKlinik(klinik);
-            daftarAntrian.add(antrian);
+        if (cariAntrian(tanggal, bulan, tahun, klinik) < 0) {
+            daftarAntrian.get(cariAntrian(tanggal, bulan, tahun, klinik)).Mendaftar(pasien);
+        } else {
+            buatAntrian(tanggal, bulan, tahun, klinik);
+            daftarAntrian.get(cariAntrian(tanggal, bulan, tahun, klinik)).Mendaftar(pasien);
         }
     }
-
+    
     public static Pasien cariPasien(String noRM) {
         for (int i = 0; i < daftarAntrian.size(); i++) {
             if (daftarAntrian.get(i).getPasienAntri().get(i).getNoRekamMedis().equalsIgnoreCase(noRM)) {
@@ -124,10 +113,8 @@ public class AntrianKlinik {
             }
         }
         return null;
-        
-        
     }
-
+    
     public static void buatAntrian(int tanggal, int bulan, int tahun, Klinik klinik) {
         AntrianKlinik antrian = new AntrianKlinik();
         antrian.setTanggalAntrian(tanggal);
@@ -135,14 +122,14 @@ public class AntrianKlinik {
         antrian.setTahunAntrian(tahun);
         antrian.setKlinik(klinik);
         // tambah dalam list antrian
-        if (cariAntrian(tanggal, bulan, tahun, klinik) <0) {
+        if (cariAntrian(tanggal, bulan, tahun, klinik) < 0) {
             // tambah dalam list antrian
             daftarAntrian.add(antrian);
         } else {
             System.out.println("Antrian Sudah Ada");
         }
     }
-
+    
     public static int cariAntrian(int tanggalAntrian, int bulanAntrian, int tahunAntrian, Klinik klinik) {
         for (int i = 0; i < daftarAntrian.size(); i++) {
             if (daftarAntrian.get(i).getTanggalAntrian() == tanggalAntrian
@@ -155,14 +142,14 @@ public class AntrianKlinik {
         }
         return -1;
     }
-
+    
     public String toString() {
-
+        
         return String.valueOf(tahunAntrian)
                 + String.valueOf(bulanAntrian)
                 + String.valueOf(tanggalAntrian)
                 + klinik.getIdKlinik()
                 + klinik.getNamaKlinik();
     }
-
+    
 }
