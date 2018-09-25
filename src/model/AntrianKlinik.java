@@ -21,20 +21,21 @@ public class AntrianKlinik {
      * urutanPasien dengan ArrayList
      */
     public static ArrayList<AntrianKlinik> daftarAntrian = new ArrayList<AntrianKlinik>();
+    private static ArrayList<Pasien> PasienAntri = new ArrayList<Pasien>();
 
+    public static ArrayList<Pasien> getPasienAntri() {
+        return PasienAntri;
+    }
+
+    public static void setPasienAntri(ArrayList<Pasien> PasienAntri) {
+        AntrianKlinik.PasienAntri = PasienAntri;
+    }
+    
     private Klinik klinik;
     private int tanggalAntrian;
     private int bulanAntrian;
     private int tahunAntrian;
-    private int nomorAntrian;
 
-    public int getNomorAntrian() {
-        return nomorAntrian;
-    }
-
-    public void setNomorAntrian(int nomorAntrian) {
-        this.nomorAntrian = nomorAntrian;
-    }
 
     public int getTanggalAntrian() {
         return tanggalAntrian;
@@ -76,16 +77,11 @@ public class AntrianKlinik {
         this.klinik = klinik;
         
     }
-    
-    public ArrayList<AntrianKlinik> getDaftarPasien() {
-        //pengambalian nilai dari variabel urutanPasien
-        return daftarAntrian;
-    }
 
-    public void setDaftarPasien(ArrayList<Pasien> urutanPasien) {
-        // pernyataan bahwa nilai dari variabel daftarPasien sama dengan nilai dari variabel lokal daftarPasien
-        this.daftarAntrian = daftarAntrian;
-    }
+//    public void setDaftarPasien(ArrayList<Pasien> urutanPasien) {
+//        // pernyataan bahwa nilai dari variabel daftarPasien sama dengan nilai dari variabel lokal daftarPasien
+//        this.daftarAntrian = daftarAntrian;
+//    }
 
     public void setKlinik(Klinik klinik) {
         this.klinik = klinik;
@@ -102,17 +98,31 @@ public class AntrianKlinik {
 
     public void Mendaftar(Pasien pasien) {
         // mengisi data pada variabel daftarPasien dengan variabel lokal daftarPasien 
-        pasien.getDaftarPasienKlinik().add(pasien);
+        PasienAntri.add(pasien);
     }
 
     public static void daftarPasien(Pasien pasien, int tanggal, int bulan, int tahun, Klinik klinik) {
         // cari antrian klinik,jika ada fungsi mendaftar dari objek antrian
         // jika tidak ada buat antrian baru 
-
+        
+        if(cariAntrian(tanggal, bulan, tahun, klinik)<0){
+            AntrianKlinik.daftarAntrian.get(cariAntrian(tanggal, bulan, tahun, klinik)).Mendaftar(pasien);
+        }else{
+            AntrianKlinik antrian = new AntrianKlinik();
+            antrian.setTanggalAntrian(tanggal);
+            antrian.setBulanAntrian(bulan);
+            antrian.setTahunAntrian(tahun);
+            antrian.setKlinik(klinik);
+            daftarAntrian.add(antrian);
+        }
     }
 
     public static Pasien cariPasien(String noRM) {
-       
+        for (int i = 0; i < daftarAntrian.size(); i++) {
+            if (daftarAntrian.get(i).getPasienAntri().get(i).getNoRekamMedis().equalsIgnoreCase(noRM)) {
+                return daftarAntrian.get(i).getPasienAntri().get(i);
+            }
+        }
         return null;
         
         
@@ -140,7 +150,7 @@ public class AntrianKlinik {
                     && daftarAntrian.get(i).getTahunAntrian() == tahunAntrian
                     && daftarAntrian.get(i).getKlinik().getIdKlinik().equalsIgnoreCase(klinik.getIdKlinik())
                     && daftarAntrian.get(i).getKlinik().getNamaKlinik().equalsIgnoreCase(klinik.getNamaKlinik())) {
-                return 1;
+                return i;
             }
         }
         return -1;

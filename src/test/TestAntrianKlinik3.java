@@ -50,8 +50,8 @@ public class TestAntrianKlinik3 {
             AntrianKlinik.daftarAntrian.get(indeksAntrian).Mendaftar(pasien1);
             AntrianKlinik.daftarAntrian.get(indeksAntrian).Mendaftar(pasien2);
         }
-        for (int i = 0; i < AntrianKlinik.daftarAntrian.get(indeksAntrian).getDaftarPasien().size(); i++) {
-            System.out.println(AntrianKlinik.daftarAntrian.get(indeksAntrian).getDaftarPasien().get(i));
+        for (int i = 0; i < AntrianKlinik.daftarAntrian.get(indeksAntrian).getPasienAntri().size(); i++) {
+            System.out.println(AntrianKlinik.daftarAntrian.get(indeksAntrian).getPasienAntri().get(i));
         }
     }
 
