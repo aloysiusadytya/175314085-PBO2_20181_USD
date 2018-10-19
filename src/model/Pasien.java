@@ -284,24 +284,30 @@ public class Pasien {
     public static void bacaDaftarPasien(File file) {
         try {
             FileInputStream fis = new FileInputStream(file);
+
             String hasilBaca = "";
             int dataInt;
+            boolean isNoRM = false;
+            boolean isNama = false;
+            boolean isAlamat = false;
             while ((dataInt = fis.read()) != -1) {
-                boolean isNoRM = false;
-                boolean isNama = false;
-                boolean isAlamat = false;
-                if ((dataInt = fis.read()) != '\n') {
-                    if ((dataInt = fis.read()) != '\t' && isNoRM) {
-                        hasilBaca = hasilBaca + (char) dataInt;
-                    }
-                    isNoRM = true;
-                    
-
+                if ((char) dataInt != '\n') {
+                    if ((char) dataInt != '\t' && isNoRM == false) {
+                        if ((char) dataInt != '\t' && isNama == false) {
+                            if ((char) dataInt != '\t' && isAlamat == false) {
+                                hasilBaca = hasilBaca + (char) dataInt;
+                            } 
+                        } 
+                    } 
                 } else {
-                    System.out.println("Akhir Kalimat");
+                    Pasien temp = new Pasien();
+                    temp.setNoRM(hasilBaca);
+                    temp.setNama(hasilBaca);
+                    temp.setAlamat(hasilBaca);
+                    tambahPasienBaru(temp);
                 }
-
             }
+
             fis.close();
         } catch (FileNotFoundException ex) {
             Logger.getLogger(Pasien.class.getName()).log(Level.SEVERE, null, ex);
