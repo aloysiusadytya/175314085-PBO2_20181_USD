@@ -5,9 +5,16 @@
  */
 package model;
 
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
+import java.io.IOException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 /**
  *
@@ -24,16 +31,17 @@ public class Pasien {
     private int tanggalLahir;
     private int bulanLahir;
     private int tahunLahir;
-    private String noRekamMedis;
+    private String noRM;
+    private String nik;
 
     public static ArrayList<Pasien> daftarPasien
             = new ArrayList<Pasien>();
 
-    public static ArrayList<Pasien> getDaftarPasienKlinik() {
+    public static ArrayList<Pasien> getDaftarPasien() {
         return daftarPasien;
     }
 
-    public static void setDaftarPasienKlinik(ArrayList<Pasien> daftarPasienKlinik) {
+    public static void setDaftarPasien(ArrayList<Pasien> daftarPasienKlinik) {
         Pasien.daftarPasien = daftarPasienKlinik;
     }
 
@@ -191,7 +199,7 @@ public class Pasien {
      *
      * @return
      */
-    public String NoRekamMedis() {
+    public String NoRM() {
         String noRekamMedis;
         Date date = new Date();
         SimpleDateFormat ft = new SimpleDateFormat("yyyyMMdd");
@@ -202,16 +210,16 @@ public class Pasien {
     /**
      * method ini digunakan untuk memasukkan nilai dari variabel noRekamMedis
      * dengan parameter lokal dengan tipe String
+     *
+     * @param noRekamMedis
      */
-    public void setNoRekamMedis(String noRekamMedis) {
-        this.noRekamMedis = noRekamMedis;
+    public void setNoRM(String noRM) {
+        this.noRM = noRM;
     }
 
-    
     public String getNoRekamMedis() {
-        return noRekamMedis;
+        return noRM;
     }
-    private String nik;
 
     public void setNik(String nik) {
         this.nik = nik;
@@ -253,4 +261,52 @@ public class Pasien {
         return result;
     }
 
+    public static void simpanDaftarPasien(File file) {
+        try {
+            FileOutputStream fos = new FileOutputStream(file);
+            for (int i = 0; i < daftarPasien.size(); i++) {
+                String data = daftarPasien.get(i).toString();
+                fos.write(data.getBytes());
+            }
+            fos.close();
+        } catch (FileNotFoundException ex) {
+            Logger.getLogger(Pasien.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (IOException ex) {
+            Logger.getLogger(Pasien.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
+
+    @Override
+    public String toString() {
+        return noRM + "\t" + nama + "\t" + alamat + "\n";
+    }
+
+    public static void bacaDaftarPasien(File file) {
+        try {
+            FileInputStream fis = new FileInputStream(file);
+            String hasilBaca = "";
+            int dataInt;
+            while ((dataInt = fis.read()) != -1) {
+                boolean isNoRM = false;
+                boolean isNama = false;
+                boolean isAlamat = false;
+                if ((dataInt = fis.read()) != '\n') {
+                    if ((dataInt = fis.read()) != '\t' && isNoRM) {
+                        hasilBaca = hasilBaca + (char) dataInt;
+                    }
+                    isNoRM = true;
+                    
+
+                } else {
+                    System.out.println("Akhir Kalimat");
+                }
+
+            }
+            fis.close();
+        } catch (FileNotFoundException ex) {
+            Logger.getLogger(Pasien.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (IOException ex) {
+            Logger.getLogger(Pasien.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
 }
