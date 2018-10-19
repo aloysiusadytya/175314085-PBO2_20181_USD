@@ -287,23 +287,29 @@ public class Pasien {
 
             String hasilBaca = "";
             int dataInt;
-            boolean isNoRM = false;
-            boolean isNama = false;
-            boolean isAlamat = false;
+            Pasien temp = new Pasien();
+            int counter = 1;
             while ((dataInt = fis.read()) != -1) {
                 if ((char) dataInt != '\n') {
-                    if ((char) dataInt != '\t' && isNoRM == false) {
-                        if ((char) dataInt != '\t' && isNama == false) {
-                            if ((char) dataInt != '\t' && isAlamat == false) {
-                                hasilBaca = hasilBaca + (char) dataInt;
-                            } 
-                        } 
-                    } 
+                    if ((char) dataInt != '\t') {
+                        hasilBaca = hasilBaca + (char) dataInt;
+                    } else {
+                        if (counter == 1) {
+                            temp.setNoRM(hasilBaca);
+                        } else if (counter == 2) {
+                            temp.setNama(hasilBaca);
+                        } else {
+                            temp.setAlamat(hasilBaca);
+                            counter = 0;
+                        }
+                        System.out.println(hasilBaca);
+                        hasilBaca = "";
+                        counter++;
+                    }
+
                 } else {
-                    Pasien temp = new Pasien();
-                    temp.setNoRM(hasilBaca);
-                    temp.setNama(hasilBaca);
-                    temp.setAlamat(hasilBaca);
+
+                    hasilBaca = "";
                     tambahPasienBaru(temp);
                 }
             }
