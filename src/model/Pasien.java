@@ -282,39 +282,41 @@ public class Pasien {
     }
 
     public static void bacaDaftarPasien(File file) {
+        FileInputStream fis = null;
+        String hasil = "";
+        int dataInt;
+        boolean noRM = false;
+        boolean nama = false;
+        boolean alamat = false;
+        Pasien temp = new Pasien();
         try {
-            FileInputStream fis = new FileInputStream(file);
-
-            String hasilBaca = "";
-            int dataInt;
-            Pasien temp = new Pasien();
-            int counter = 1;
+            fis = new FileInputStream(file);
             while ((dataInt = fis.read()) != -1) {
                 if ((char) dataInt != '\n') {
                     if ((char) dataInt != '\t') {
-                        hasilBaca = hasilBaca + (char) dataInt;
+                        hasil = hasil + (char) dataInt;
                     } else {
-                        if (counter == 1) {
-                            temp.setNoRM(hasilBaca);
-                        } else if (counter == 2) {
-                            temp.setNama(hasilBaca);
-                        } else {
-                            temp.setAlamat(hasilBaca);
-                            counter = 0;
+                        if (noRM == false) {
+                            temp.setNoRM(hasil);
+                            noRM = true;
+                            hasil = "";
+                        } else if (nama == false) {
+                            temp.setNama(hasil);
+                            nama = true;
+                            hasil = "";
                         }
-                        System.out.println(hasilBaca);
-                        hasilBaca = "";
-                        counter++;
                     }
-
                 } else {
-
-                    hasilBaca = "";
-                    tambahPasienBaru(temp);
+                    temp.setAlamat(hasil);
+                    alamat = true;
+                    hasil = "";
+                    Pasien.tambahPasienBaru(temp);
+                    noRM = false;
+                    nama = false;
+                    alamat = false;
+                    temp=new Pasien();
                 }
             }
-
-            fis.close();
         } catch (FileNotFoundException ex) {
             Logger.getLogger(Pasien.class.getName()).log(Level.SEVERE, null, ex);
         } catch (IOException ex) {

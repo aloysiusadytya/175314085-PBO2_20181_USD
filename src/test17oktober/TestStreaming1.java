@@ -25,8 +25,9 @@ public class TestStreaming1 {
             String hasilBaca = "";
             fis = new FileInputStream(file);
             int dataInt;
+
             while ((dataInt = fis.read()) != -1) {
-                if ((dataInt = fis.read()) != '\n') {
+                if ((char) dataInt != '\n') {
                     hasilBaca = hasilBaca + (char) dataInt;
                 } else {
                     System.out.println("Akhir Kalimat");
