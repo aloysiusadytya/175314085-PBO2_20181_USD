@@ -10,6 +10,7 @@ import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
+import java.io.Serializable;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
@@ -20,7 +21,7 @@ import java.util.logging.Logger;
  *
  * @author Hewlett-Packard
  */
-public class Pasien {
+public class Pasien implements Serializable{
 
     /**
      * mendeklarasikan variabel yang diperlukan untuk mengisi data dari pasien
@@ -32,7 +33,7 @@ public class Pasien {
     private int bulanLahir;
     private int tahunLahir;
     private String noRM;
-    private String nik;
+    String nik;
 
     public static ArrayList<Pasien> daftarPasien
             = new ArrayList<Pasien>();
@@ -217,7 +218,7 @@ public class Pasien {
         this.noRM = noRM;
     }
 
-    public String getNoRekamMedis() {
+    public String getNoRM() {
         return noRM;
     }
 

@@ -108,7 +108,7 @@ public class AntrianKlinik {
     
     public static Pasien cariPasien(String noRM) {
         for (int i = 0; i < daftarAntrian.size(); i++) {
-            if (daftarAntrian.get(i).getPasienAntri().get(i).getNoRekamMedis().equalsIgnoreCase(noRM)) {
+            if (daftarAntrian.get(i).getPasienAntri().get(i).getNoRM().equalsIgnoreCase(noRM)) {
                 return daftarAntrian.get(i).getPasienAntri().get(i);
             }
         }
